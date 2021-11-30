@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<meta name="viewport" content="width =device-width" />
+<style>
+
+    img {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 350px;
+        height: 200px;
+    }
+
+        img:hover {
+            box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+        }
+</style>
+
+
+<h1>Furniture catalog</h1>
+
+<div class="row mt-5 md-2">
+    @{ foreach (var furniture in Model.AllFurniture)
+        {
+
+        <div class="col-lg-4">
+            <a target="_blank" href="@furniture.ImagePath">
+                <img src="@furniture.ImagePath" alt="@furniture.Title" />
+            </a>
+            <h2>Model: @furniture.Title</h2>
+            <p>Description: @furniture.Description</p>
+            <p>Price: @furniture.Price.ToString("c")</p>
+
+            <!--<p><input type="submit" value="Add to basket" class="btn btn-warning " href="#" /></p>-->
+            <a asp-controller="ShoppingCart" asp-action="AddItemToCart" asp-route-item=@furniture.FurnitureId asp-route-user=@User.Identity.Name class="btn btn-warning">add to cart</a>
+            <p style="padding-top:5px"></p>
+        </div>
+           
+        }
+
+    }
+
+</div>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<CarpathianFurniture.Models.Furniture>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+</style>
+
+<h1>Shopping Cart</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@Html.DisplayFor(modelItem => item.ImagePath)">
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-controller="ShoppingCart" asp-action="DeleteItem"
+                       asp-route-item=@item.FurnitureId asp-route-user=@User.Identity.Name class="btn btn-warning">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<a asp-controller="ShoppingCart" asp-action="Buy"
+   asp-route-user=@User.Identity.Name class="btn btn-primary">Buy</a>
