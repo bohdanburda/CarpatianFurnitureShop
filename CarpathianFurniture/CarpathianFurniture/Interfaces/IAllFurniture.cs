@@ -10,8 +10,6 @@ namespace CarpathianFurniture.Interfaces
     {
         IEnumerable<Furniture> Furnitures { get; }
 
-    //    IEnumerable<Furniture> GetFavouriteFurniture { get; }
-
         Furniture getObjectFurniture(int FurnitureID);
     }
 }

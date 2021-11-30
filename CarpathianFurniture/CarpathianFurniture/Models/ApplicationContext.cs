@@ -18,7 +18,6 @@ namespace CarpathianFurniture.Models
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
-          // Database.EnsureDeleted();
           Database.EnsureCreated();
         }
 
@@ -42,14 +41,10 @@ namespace CarpathianFurniture.Models
 
             User adminUser = new User { Id = 1, Email = adminEmail, Password = adminPassword, RoleId = adminRole.Id };
 
-          //  Category categories = new Category { CategoryId = 1, Name = "Sofas", ImagePath = "\\wwwroot\\images\\sofas.jpg" };
-           // Furniture furniture = new Furniture { FurnitureId = 1, Title = "Sofa", Price = 60000, Description = "Soft corner sofa", ImagePath = "\\wwwroot\\images\\cheap_and_comfortable_sofa.jpg"};
-
 
             modelBuilder.Entity<Role>().HasData(new Role[] { adminRole, userRole });
             modelBuilder.Entity<User>().HasData(new User[] { adminUser });
 
-           // modelBuilder.Entity<Furniture>().HasData(new Furniture[] { furniture });
             base.OnModelCreating(modelBuilder);
           
         }

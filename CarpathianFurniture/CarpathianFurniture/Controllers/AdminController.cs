@@ -32,14 +32,12 @@ namespace CarpathianFurniture.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult Index()
         {
-            //return View(await db.Furnitures.ToListAsync());
             return View();
           
         }
         [Authorize(Roles = "admin")]
         public IActionResult ViewCatalog()
         {
-            //return View(await db.Furnitures.ToListAsync());
             FurnitureListViewModel obj = new FurnitureListViewModel();
             obj.AllFurniture = _allFurniture.Furnitures;
             return View(obj);
