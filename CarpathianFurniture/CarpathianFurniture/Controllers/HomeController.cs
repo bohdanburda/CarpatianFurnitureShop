@@ -51,7 +51,6 @@ namespace CarpathianFurniture.Controllers
                    .Include(u => u.Role)
                    .FirstOrDefault(u => u.Email == User.Identity.Name);
 
-            //return View(User.Identity);
             return View(userDb);
         }
 
